@@ -1,84 +1,99 @@
-# Mini Twitter Clone
+# Twitter Clone App
 
-A simple Twitter-like application built with Vue 3 + TypeScript (frontend) and Bun + Hono + Drizzle ORM (backend).
+A simple Twitter-like application built with Vue 3, TypeScript, Express, and Drizzle ORM.
 
 ## Features
 
-- Create tweets with a 280-character limit
-- View all tweets in a feed
+- Create tweets (max 280 characters)
+- View all tweets in chronological order
 - Real-time character counter
 - Mobile-responsive design
-- Input validation
-- Error handling
+- Error handling and loading states
+
+## Tech Stack
+
+- **Frontend**: Vue 3 + TypeScript + Tailwind CSS
+- **Backend**: Node.js + Express + Drizzle ORM
+- **Database**: SQLite
 
 ## Prerequisites
 
-- Node.js (v16 or higher)
-- Bun (v1.0 or higher)
+- Node.js (v14 or higher)
+- npm (v6 or higher)
 
-## Setup
+## Setup Instructions
 
-### Backend
+### Backend Setup
 
 1. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
+```bash
+cd backend
+```
 
 2. Install dependencies:
-   ```bash
-   bun install
-   ```
+```bash
+npm install
+```
 
-3. Start the development server:
-   ```bash
-   bun run dev
-   ```
+3. Start the backend server:
+```bash
+npm run dev
+```
 
 The backend server will run on http://localhost:3000
 
-### Frontend
+### Frontend Setup
 
-1. Navigate to the frontend directory:
-   ```bash
-   cd frontend
-   ```
+1. Open a new terminal and navigate to the frontend directory:
+```bash
+cd frontend
+```
 
 2. Install dependencies:
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+3. Start the frontend development server:
+```bash
+npm run dev
+```
 
-The frontend application will run on http://localhost:5173
+The frontend will be available at http://localhost:5173 (or the port shown in your terminal)
 
 ## API Endpoints
 
 - `POST /api/tweet` - Create a new tweet
   ```json
   {
-    "author": "string",
-    "content": "string (max 280 characters)"
+    "author": "Your Name",
+    "content": "Your tweet content"
   }
   ```
-
 - `GET /api/tweets` - Get all tweets (newest first)
 
-## Technologies Used
+## Project Structure
 
-- Frontend:
-  - Vue 3
-  - TypeScript
-  - Tailwind CSS
-  - Axios
+```
+/
+├── backend/          # Backend code
+│   └── src/
+│       ├── db/      # Database configuration
+│       ├── validations/  # Input validation
+│       └── index.ts # Main server file
+└── frontend/        # Frontend code
+    └── src/
+        ├── App.vue  # Main component
+        └── main.ts  # Entry point
+```
 
-- Backend:
-  - Bun
-  - Hono
-  - Drizzle ORM
-  - SQLite
-  - Zod (validation) 
+## Error Handling
+
+The application includes error handling for:
+- Invalid tweet content (empty or > 280 characters)
+- Network errors
+- Server errors
+
+## Contributing
+
+Feel free to submit issues and enhancement requests! 
