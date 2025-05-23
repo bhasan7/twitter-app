@@ -5,7 +5,7 @@ export const tweets = sqliteTable('tweets', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   author: text('author').notNull(),
   content: text('content').notNull(),
-  createdAt: text('created_at').default(sql`CURRENT_TIMESTAMP`).notNull(),
+  createdAt: text('created_at').default(sql`datetime('now', 'localtime')`).notNull(),
 });
 
 export type Tweet = typeof tweets.$inferSelect;

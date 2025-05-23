@@ -36,7 +36,15 @@ defineProps<{
           <div class="flex items-center justify-between">
             <h3 class="text-lg font-semibold text-gray-900">{{ tweet.author }}</h3>
             <p class="text-sm text-gray-400">
-              {{ new Date(tweet.createdAt).toLocaleString() }}
+              {{ new Date(tweet.createdAt).toLocaleString('en-GB', { 
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+              }) }}
             </p>
           </div>
           <p class="mt-3 text-gray-700 whitespace-pre-line overflow-wrap-anywhere break-all">{{ tweet.content }}</p>
