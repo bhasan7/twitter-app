@@ -1,10 +1,5 @@
 <script setup lang="ts">
-interface Tweet {
-  id: number
-  author: string
-  content: string
-  createdAt: string
-}
+import type { Tweet } from '../types/tweet'
 
 defineProps<{
   tweets: Tweet[]
