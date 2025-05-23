@@ -25,8 +25,14 @@ app.post('/api/tweet', async (c) => {
     return c.json(newTweet[0], 201);
   } catch (error) {
     if (error.name === 'ZodError') {
-      return c.json({ error: error.errors }, 400);
+      return c.json({ 
+        error: error.errors.map(err => ({
+          field: err.path.join('.'),
+          message: err.message
+        }))
+      }, 400);
     }
+    console.error('Server error:', error);
     return c.json({ error: 'Internal server error' }, 500);
   }
 });
