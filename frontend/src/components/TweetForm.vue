@@ -37,41 +37,49 @@ const updateRemainingChars = () => {
 </script>
 
 <template>
-  <div class="bg-white rounded-lg shadow p-6 mb-8">
-    <form @submit.prevent="handleSubmit" class="space-y-4">
+  <div class="bg-white rounded-2xl shadow-lg p-8 mb-10 border border-gray-200">
+    <form @submit.prevent="handleSubmit" class="space-y-6">
+
       <div>
-        <label for="author" class="block text-sm font-medium text-gray-700">Your Name</label>
+        <label for="author" class="block text-sm font-semibold text-gray-700 mb-1">Your Name</label>
         <input
           type="text"
           id="author"
           v-model="newTweet.author"
           required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          placeholder="e.g. John Doe"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
         />
       </div>
+
       <div>
-        <label for="content" class="block text-sm font-medium text-gray-700">What's happening?</label>
+        <label for="content" class="block text-sm font-semibold text-gray-700 mb-1">What's happening?</label>
         <textarea
           id="content"
           v-model="newTweet.content"
           @input="updateRemainingChars"
           required
           :maxlength="280"
-          rows="3"
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          rows="4"
+          placeholder="Share your thoughts with the world..."
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
         ></textarea>
-        <p class="mt-1 text-sm text-gray-500" :class="{ 'text-red-500': remainingChars < 0 }">
+        <p class="mt-2 text-sm" :class="remainingChars < 0 ? 'text-red-500' : 'text-gray-500'">
           {{ remainingChars }} characters remaining
         </p>
       </div>
+
       <button
         type="submit"
         :disabled="loading || remainingChars < 0"
-        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+        class="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {{ loading ? 'Posting...' : 'Tweet' }}
       </button>
     </form>
+
+    <div v-if="error" class="mt-4">
+      <ErrorMessage :message="error" />
+    </div>
   </div>
-  <ErrorMessage :message="error" />
 </template>
