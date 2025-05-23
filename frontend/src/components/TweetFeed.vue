@@ -39,7 +39,7 @@ defineProps<{
               {{ new Date(tweet.createdAt).toLocaleString() }}
             </p>
           </div>
-          <p class="mt-3 text-gray-700 whitespace-pre-line">{{ tweet.content }}</p>
+          <p class="mt-3 text-gray-700 whitespace-pre-line overflow-wrap-anywhere break-all">{{ tweet.content }}</p>
         </div>
       </div>
     </div>
