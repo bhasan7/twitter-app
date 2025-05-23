@@ -61,6 +61,9 @@ npm run dev
 
 The frontend will be available at http://localhost:5173 (or the port shown in your terminal)
 
+Also enter the folder backend and run the command
+bun run ./src/db/migrate.ts
+
 ## API Endpoints
 
 - `POST /api/tweet` - Create a new tweet
